@@ -15,6 +15,12 @@ run/main_scene="res://assets/models/level_01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+
 [input]
 
 forward={
@@ -46,3 +52,9 @@ jump={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/size=8192
+lights_and_shadows/directional_shadow/size.mobile=4096
+anti_aliasing/quality/msaa_3d=2

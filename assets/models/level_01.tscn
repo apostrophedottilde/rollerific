@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwu1yeiouy6e5"]
+[gd_scene load_steps=4 format=3 uid="uid://bwu1yeiouy6e5"]
 
 [ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_p6o7r"]
 [ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://assets/models/ball.tscn" id="2_2jpkw"]
+
+[sub_resource type="Environment" id="Environment_q8qqc"]
+background_mode = 1
+background_color = Color(0.509804, 0.592157, 0.992157, 1)
+ambient_light_color = Color(0.403922, 0.498039, 0.85098, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.47451, 0.517647, 0.843137, 1)
+adjustment_enabled = true
+adjustment_brightness = 0.75
+adjustment_contrast = 1.5
+adjustment_saturation = 1.2
 
 [node name="Level_01" type="Node3D"]
 
@@ -18,3 +30,12 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="RigidBody3D" parent="GridMap" instance=ExtResource("2_2jpkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 2.19132, 4.82911)
+light_color = Color(0.917647, 0.784314, 0.690196, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q8qqc")
