@@ -28,7 +28,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="RigidBody3D" parent="GridMap" instance=ExtResource("2_2jpkw")]
+[node name="Ball" parent="GridMap" instance=ExtResource("2_2jpkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

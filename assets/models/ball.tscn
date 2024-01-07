@@ -5,20 +5,24 @@
 [ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="2_foumc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_21ica"]
-friction = 8.0
-bounce = 0.5
+friction = 4.0
+bounce = 0.3
+absorbent = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1k17b"]
+radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwako"]
 albedo_texture = ExtResource("1_kdkaa")
 roughness = 0.4
 
 [node name="Ball" type="RigidBody3D"]
+mass = 3.5
 physics_material_override = SubResource("PhysicsMaterial_21ica")
-gravity_scale = 4.0
 angular_damp = 1.0
 script = ExtResource("1_g8qkv")
+max_camera_rotation_speed = 3.055
+rolling_force = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_1k17b")
