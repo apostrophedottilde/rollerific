@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci1tqd8q37feu"]
+
+[ext_resource type="Shader" path="res://scenes/powerups/up1/melty_shader.gdshader" id="1_mkgxi"]
+[ext_resource type="Script" path="res://scenes/powerups/up1/power_up_01.gd" id="1_x6fkb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5xqi"]
+render_priority = 0
+shader = ExtResource("1_mkgxi")
+
+[sub_resource type="SphereMesh" id="SphereMesh_e16n0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yl55p"]
+
+[node name="PowerUp01" type="Node3D"]
+script = ExtResource("1_x6fkb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_c5xqi")
+mesh = SubResource("SphereMesh_e16n0")
+
+[node name="CollisionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+shape = SubResource("SphereShape3D_yl55p")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
