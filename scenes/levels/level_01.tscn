@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwu1yeiouy6e5"]
 
-[ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_sjokt"]
-[ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://scenes/ball/ball.tscn" id="2_oxbk7"]
-[ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_hokox"]
-[ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point.tscn" id="4_6tkyf"]
+[ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_k1k77"]
+[ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://scenes/ball/ball.tscn" id="2_1edft"]
+[ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_7htj0"]
+[ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point/target_point.tscn" id="4_0afh8"]
 
 [sub_resource type="Environment" id="Environment_q8qqc"]
 background_mode = 1
@@ -23,7 +23,7 @@ size = Vector3(343.904, 1, 263.884)
 [node name="Level_01" type="Node3D"]
 
 [node name="LevelBlocks" type="GridMap" parent="."]
-mesh_library = ExtResource("1_sjokt")
+mesh_library = ExtResource("1_k1k77")
 cell_size = Vector3(4, 2, 4)
 cell_center_x = false
 cell_center_y = false
@@ -42,7 +42,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q8qqc")
 
-[node name="Ball" parent="." instance=ExtResource("2_oxbk7")]
+[node name="Ball" parent="." instance=ExtResource("2_1edft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752256, 0)
 
 [node name="DeathPit" type="Area3D" parent="."]
@@ -53,14 +53,15 @@ shape = SubResource("BoxShape3D_25q1d")
 
 [node name="Pickups" type="Node" parent="."]
 
-[node name="PowerUp01" parent="Pickups" instance=ExtResource("3_hokox")]
+[node name="PowerUp01" parent="Pickups" instance=ExtResource("3_7htj0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 
-[node name="PowerUp02" parent="Pickups" instance=ExtResource("3_hokox")]
+[node name="PowerUp02" parent="Pickups" instance=ExtResource("3_7htj0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 12)
 
 [node name="Nasties" type="Node" parent="."]
 
-[node name="TargetPoint" parent="." instance=ExtResource("4_6tkyf")]
+[node name="TargetPoint" parent="." instance=ExtResource("4_0afh8")]
+next_point = "res://scenes/levels/level_02.tscn"
 
 [connection signal="body_entered" from="DeathPit" to="Ball" method="_on_death_pit_body_entered"]
