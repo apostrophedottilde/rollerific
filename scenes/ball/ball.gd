@@ -36,3 +36,7 @@ func _physics_process(delta: float):
 
 func _on_death_pit_body_entered(body: Node3D) -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_target_point_body_entered(body):
+	pass # Replace with function body.

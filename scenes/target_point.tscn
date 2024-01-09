@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpiwsrsssxecl"]
+
+[ext_resource type="Script" path="res://scenes/target_point.gd" id="1_f1x00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyrab"]
+size = Vector3(3, 1.79321, 3)
+
+[node name="TargetPoint" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 4, 44)
+script = ExtResource("1_f1x00")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16809, 0)
+shape = SubResource("BoxShape3D_yyrab")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwu1yeiouy6e5"]
+[gd_scene load_steps=7 format=3 uid="uid://bwu1yeiouy6e5"]
 
 [ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_sjokt"]
 [ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://scenes/ball/ball.tscn" id="2_oxbk7"]
 [ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_hokox"]
+[ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point.tscn" id="4_6tkyf"]
 
 [sub_resource type="Environment" id="Environment_q8qqc"]
 background_mode = 1
@@ -59,5 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 12)
 
 [node name="Nasties" type="Node" parent="."]
+
+[node name="TargetPoint" parent="." instance=ExtResource("4_6tkyf")]
 
 [connection signal="body_entered" from="DeathPit" to="Ball" method="_on_death_pit_body_entered"]
