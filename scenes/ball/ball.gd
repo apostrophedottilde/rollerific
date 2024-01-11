@@ -34,9 +34,9 @@ func _physics_process(delta: float):
 		apply_central_impulse(Vector3.UP * jump_impulse)
 
 
-func _on_death_pit_body_entered(body: Node3D) -> void:
-	get_tree().reload_current_scene()
+func _on_death_pit_body_entered(_body: Node3D) -> void:
+	get_tree().call_deferred("reload_current_scene")
 
 
-func _on_target_point_body_entered(body):
+func _on_target_point_body_entered(_body: Node3D) -> void:
 	pass # Replace with function body.

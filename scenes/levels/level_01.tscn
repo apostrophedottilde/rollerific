@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwu1yeiouy6e5"]
+[gd_scene load_steps=9 format=3 uid="uid://bwu1yeiouy6e5"]
 
 [ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_k1k77"]
 [ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://scenes/ball/ball.tscn" id="2_1edft"]
 [ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_7htj0"]
 [ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point/target_point.tscn" id="4_0afh8"]
+[ext_resource type="Script" path="res://ui/ui_controller.gd.gd" id="5_7fsae"]
 
 [sub_resource type="Environment" id="Environment_q8qqc"]
 background_mode = 1
@@ -19,6 +20,9 @@ adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25q1d"]
 size = Vector3(343.904, 1, 263.884)
+
+[sub_resource type="Theme" id="Theme_s32su"]
+default_font_size = 24
 
 [node name="Level_01" type="Node3D"]
 
@@ -63,5 +67,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 12)
 
 [node name="TargetPoint" parent="." instance=ExtResource("4_0afh8")]
 next_point = "res://scenes/levels/level_02.tscn"
+
+[node name="UI" type="Container" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("5_7fsae")
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 2
+theme = SubResource("Theme_s32su")
+text = "100"
 
 [connection signal="body_entered" from="DeathPit" to="Ball" method="_on_death_pit_body_entered"]

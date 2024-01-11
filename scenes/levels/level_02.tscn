@@ -25,3 +25,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 28)
 
 [node name="PowerUp07" parent="Pickups" index="5" instance=ExtResource("2_otsyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6002, 8.82298, 39.0541)
+
+[node name="TargetPoint" parent="." index="7"]
+next_point = ""
