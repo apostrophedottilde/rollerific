@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c35ij4gtudi5h"]
+
+[ext_resource type="PackedScene" uid="uid://dyv0vttpvaf0v" path="res://assets/portal.glb" id="1_hoju3"]
+[ext_resource type="Shader" path="res://scenes/portal.gdshader" id="2_1vnwv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqktm"]
+render_priority = 0
+shader = ExtResource("2_1vnwv")
+
+[node name="portal" instance=ExtResource("1_hoju3")]
+
+[node name="Portal" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_jqktm")

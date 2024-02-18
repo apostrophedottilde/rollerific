@@ -41,3 +41,6 @@ current = true
 
 [node name="FloorCheck" type="RayCast3D" parent="."]
 target_position = Vector3(0, -3, 0)
+
+[node name="Orientation" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -12)

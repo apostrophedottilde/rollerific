@@ -8,12 +8,13 @@ void vertex() {
 
 void fragment() {
 	if(UV.x > sin(TIME * 2.0)) {
-		EMISSION = vec3(0, sin(TIME * 0.44), 1);
+		EMISSION = vec3(0.0, sin(TIME * 0.8), 0.7);
+		ALBEDO = vec3(0.4, sin(TIME * 0.8), 0.2);
 		ROUGHNESS = .2;
 		METALLIC = 0.0;
 		RIM = 1.0;
 	} else {
-		ALBEDO = vec3(1, 0.2, 0);
+		ALBEDO = vec3(0.0, 0.5, 0.7);
 		ROUGHNESS = 0.2;
 		METALLIC = 1.0;
 		RIM = 1.0;

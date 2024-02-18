@@ -6,11 +6,13 @@ extends RigidBody3D
 
 @onready var camera_rig: Marker3D = $CameraRig
 @onready var floor_check_ray: RayCast3D = $FloorCheck
+@onready var orientation_ray: RayCast3D = $Orientation
 @onready var model: MeshInstance3D = $Model
 
 func _ready():
 	camera_rig.top_level = true
 	floor_check_ray.top_level = true
+	orientation_ray.top_level = true
 
 
 func _physics_process(delta: float):
@@ -21,6 +23,10 @@ func _physics_process(delta: float):
 	
 	camera_rig.global_transform.origin = new_camera_pos
 	camera_rig.rotate_y(input_rotation * max_camera_rotation_speed * delta)
+	
+	orientation_ray.global_transform.origin = ball_pos
+	orientation_ray.rotate_y(input_rotation * max_camera_rotation_speed * delta)
+	
 	rotate_y(input_rotation * max_camera_rotation_speed * delta)
 	floor_check_ray.global_transform.origin = global_transform.origin
 	
