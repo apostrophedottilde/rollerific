@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name BallCharacter
 
 @export var max_camera_rotation_speed: float = 2.5
 @export var rolling_force: float = 20

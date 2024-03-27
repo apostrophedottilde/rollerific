@@ -1,11 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwu1yeiouy6e5"]
+[gd_scene load_steps=21 format=3 uid="uid://bwu1yeiouy6e5"]
 
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_0ups8"]
 [ext_resource type="MeshLibrary" uid="uid://cw8k6l61owcew" path="res://assets/models/blocks.meshlib" id="1_k1k77"]
-[ext_resource type="PackedScene" uid="uid://dh2kbvowmcwly" path="res://scenes/ball/ball.tscn" id="2_1edft"]
+[ext_resource type="Texture2D" uid="uid://7qxncaipyg7c" path="res://assets/textures/pixar-ball.png" id="2_ybtkt"]
+[ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="3_0ibo2"]
 [ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_7htj0"]
 [ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point/target_point.tscn" id="4_0afh8"]
+[ext_resource type="Script" path="res://scenes/ball/states/movement_state_machine.gd" id="4_gytcu"]
 [ext_resource type="Script" path="res://ui/ui_controller.gd.gd" id="5_7fsae"]
+[ext_resource type="Script" path="res://scenes/ball/states/idle_state.gd" id="5_bofp0"]
 [ext_resource type="PackedScene" uid="uid://c35ij4gtudi5h" path="res://scenes/portal.tscn" id="6_fkik1"]
+[ext_resource type="Script" path="res://scenes/ball/states/rolling_state.gd" id="6_r0ur8"]
+[ext_resource type="Script" path="res://scenes/ball/states/falling_state.gd" id="7_8wffg"]
+[ext_resource type="MeshLibrary" uid="uid://dvsf4u3ggsp22" path="res://assets/masontry_kit_01.meshlib" id="7_h3cgq"]
+[ext_resource type="Script" path="res://scenes/ball/states/long_falling_state.gd" id="8_nebnv"]
+[ext_resource type="Script" path="res://scenes/ball/states/jumping_state.gd" id="9_rp6fg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1k17b"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwako"]
+albedo_texture = ExtResource("2_ybtkt")
+roughness = 0.4
 
 [sub_resource type="Theme" id="Theme_s32su"]
 default_font_size = 24
@@ -27,8 +43,56 @@ size = Vector3(343.904, 1, 263.884)
 
 [node name="Main" type="Node3D"]
 
-[node name="Ball" parent="." instance=ExtResource("2_1edft")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.752256, 0)
+[node name="Ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75226, 2.96118)
+script = ExtResource("1_0ups8")
+max_camera_rotation_speed = 3.055
+rolling_force = 60.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+shape = SubResource("SphereShape3D_1k17b")
+
+[node name="Model" type="MeshInstance3D" parent="Ball"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_jwako")
+mesh = ExtResource("3_0ibo2")
+
+[node name="CameraRig" type="Marker3D" parent="Ball"]
+
+[node name="Camera3D" type="Camera3D" parent="Ball/CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.85, 3.5)
+current = true
+
+[node name="FloorCheck" type="RayCast3D" parent="Ball"]
+target_position = Vector3(0, -3, 0)
+
+[node name="Orientation" type="RayCast3D" parent="Ball"]
+target_position = Vector3(0, 0, -12)
+
+[node name="MovementStateMachine" type="Node" parent="Ball" node_paths=PackedStringArray("current_state")]
+script = ExtResource("4_gytcu")
+current_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Ball/MovementStateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("5_bofp0")
+agent = NodePath("../..")
+
+[node name="Falling" type="Node" parent="Ball/MovementStateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("7_8wffg")
+agent = NodePath("../..")
+
+[node name="LongFalling" type="Node" parent="Ball/MovementStateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("8_nebnv")
+agent = NodePath("../..")
+
+[node name="Jumping" type="Node" parent="Ball/MovementStateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("9_rp6fg")
+agent = NodePath("../..")
+
+[node name="Rolling" type="Node" parent="Ball/MovementStateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("6_r0ur8")
+agent = NodePath("../..")
 
 [node name="UI" type="Container" parent="."]
 anchors_preset = 5
@@ -53,7 +117,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(121, 113)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Camera2" type="Camera3D" parent="UI/SubViewportContainer/SubViewport"]
@@ -63,6 +127,7 @@ current = true
 [node name="World" type="Node" parent="."]
 
 [node name="LevelBlocks" type="GridMap" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 mesh_library = ExtResource("1_k1k77")
 cell_size = Vector3(4, 2, 4)
 cell_center_x = false
@@ -99,9 +164,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 12)
 [node name="Nasties" type="Node" parent="World"]
 
 [node name="TargetPoint" parent="World" instance=ExtResource("4_0afh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 7, 46)
 next_point = "res://scenes/levels/level_02.tscn"
 
 [node name="portal" parent="World" instance=ExtResource("6_fkik1")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 2, 12)
+
+[node name="MasonryGrid" type="GridMap" parent="World"]
+mesh_library = ExtResource("7_h3cgq")
+cell_size = Vector3(4, 2, 4)
+data = {
+"cells": PackedInt32Array(-5, 65535, 1048579, -6, 65535, 4, -7, 65535, 4, -8, 65535, 4, -9, 65535, 4, -10, 65535, 4, -11, 65535, 1048576, -11, 0, 1048580, -11, 1, 1048580, -11, 2, 1048580, -11, 3, 1048580, -11, 4, 655360, -10, 4, 655364, -9, 4, 655364, -8, 4, 655364, -7, 4, 1, -7, 3, 1441793, -7, 2, 1441793, -7, 1, 1048576, -6, 2, 1048578, -6, 1, 655361, -5, 1, 0, -5, 2, 1048577, -5, 3, 1048577, -6, 3, 1048578, -6, 4, 1, -5, 4, 1048577, -5, 5, 1048580, -5, 6, 1048580, -5, 7, 1048580)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [connection signal="body_entered" from="World/DeathPit" to="Ball" method="_on_death_pit_body_entered"]
