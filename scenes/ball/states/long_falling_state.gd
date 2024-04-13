@@ -9,9 +9,14 @@ func exit():
 	print("Exiting LONG_FALLING state")
 	
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	print("Regular processing in LONG_FALLING state")
 	
 	
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	print("Physics processing in LONG_FALLING state")
+	
+
+func integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
+	pass
+	

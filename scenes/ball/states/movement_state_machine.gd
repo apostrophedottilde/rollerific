@@ -1,6 +1,7 @@
 extends Node
 class_name MovementStateMachine
 
+@export var agent: BallCharacter
 @export var current_state: MovementState
 
 var states: Dictionary = {}

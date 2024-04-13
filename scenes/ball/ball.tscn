@@ -1,28 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh2kbvowmcwly"]
+[gd_scene load_steps=12 format=3 uid="uid://dh2kbvowmcwly"]
 
-[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_g8qkv"]
-[ext_resource type="Texture2D" uid="uid://7qxncaipyg7c" path="res://assets/textures/pixar-ball.png" id="1_kdkaa"]
-[ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="2_foumc"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_21ica"]
-friction = 4.0
-bounce = 0.3
-absorbent = true
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_ku4op"]
+[ext_resource type="Texture2D" uid="uid://7qxncaipyg7c" path="res://assets/textures/pixar-ball.png" id="2_3pdmm"]
+[ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="3_i71x2"]
+[ext_resource type="Script" path="res://scenes/ball/states/movement_state_machine.gd" id="4_stw7r"]
+[ext_resource type="Script" path="res://scenes/ball/states/idle_state.gd" id="5_np4gn"]
+[ext_resource type="Script" path="res://scenes/ball/states/falling_state.gd" id="6_8agkm"]
+[ext_resource type="Script" path="res://scenes/ball/states/long_falling_state.gd" id="7_g73oc"]
+[ext_resource type="Script" path="res://scenes/ball/states/jumping_state.gd" id="8_3ewk5"]
+[ext_resource type="Script" path="res://scenes/ball/states/rolling_state.gd" id="9_eapeo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1k17b"]
 radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwako"]
-albedo_texture = ExtResource("1_kdkaa")
+albedo_texture = ExtResource("2_3pdmm")
 roughness = 0.4
 
 [node name="Ball" type="RigidBody3D"]
-mass = 3.5
-physics_material_override = SubResource("PhysicsMaterial_21ica")
-angular_damp = 1.0
-script = ExtResource("1_g8qkv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75226, -2.03882)
+script = ExtResource("1_ku4op")
 max_camera_rotation_speed = 3.055
-rolling_force = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -31,16 +29,29 @@ shape = SubResource("SphereShape3D_1k17b")
 [node name="Model" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_jwako")
-mesh = ExtResource("2_foumc")
-
-[node name="CameraRig" type="Marker3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.85, 3.5)
-current = true
+mesh = ExtResource("3_i71x2")
 
 [node name="FloorCheck" type="RayCast3D" parent="."]
-target_position = Vector3(0, -3, 0)
 
 [node name="Orientation" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -12)
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "current_state")]
+script = ExtResource("4_stw7r")
+agent = NodePath("..")
+current_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_np4gn")
+
+[node name="Falling" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_8agkm")
+
+[node name="LongFalling" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_g73oc")
+
+[node name="Jumping" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_3ewk5")
+
+[node name="Rolling" type="Node" parent="MovementStateMachine"]
+script = ExtResource("9_eapeo")
