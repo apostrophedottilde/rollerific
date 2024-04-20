@@ -4,7 +4,7 @@ class_name MovementState
 signal transitioned(new_state_name: StringName)
 
 var current_state: MovementStateMachine
-var agent: BallCharacter
+@onready var agent: BallCharacter
 
 func _ready() -> void:
 	current_state = get_parent()

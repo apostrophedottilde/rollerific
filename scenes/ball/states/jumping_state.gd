@@ -3,21 +3,24 @@ class_name JumpingState
 
 func enter():
 	print("Entering JUMPING state")
-	
 
-func exit():
-	print("Exiting JUMPING state")
 	
-
-func process(_delta: float) -> void:
-	print("Regular processing in JUMPING state")
-	
-	
-func physics_process(_delta: float) -> void:
+func physics_process(delta: float) -> void:
 	print("Physics processing in JUMPING state")
+	agent.orientation_ray.global_position = agent.position
+	agent.floor_check_ray.global_position = agent.position
 	
+	if agent.linear_velocity.y <= 0:
+		transitioned.emit("Falling")
 	
-func integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
-	# TODO: Should be checking if has started to fall again and switch to 'Falling' state instead.
-	if is_on_floor():
-		transitioned.emit("Idle")
+	agent.input_rotation = Input.get_action_strength("left") - Input.get_action_strength("right")
+	
+	if Input.is_action_pressed("left") and is_on_floor():
+		print("Pressed left")
+		agent.rotate_y(agent.input_rotation * agent.max_rotation_speed * delta)
+		agent.orientation_ray.rotate_y(agent.input_rotation * agent.max_rotation_speed * delta)
+		
+	if Input.is_action_pressed("right") and is_on_floor():
+		print("Pressed Right")
+		agent.rotate_y(agent.input_rotation * agent.max_rotation_speed * delta)
+		agent.orientation_ray.rotate_y(agent.input_rotation * agent.max_rotation_speed * delta)

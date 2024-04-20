@@ -1,15 +1,16 @@
-extends RigidBody3D
-class_name BallCharacter 
-
-@export var max_camera_rotation_speed: float = 2.5
-@export var rolling_force: float = 14
-@export var jump_impulse: float = 6
+class_name BallCharacter extends RigidBody3D
 
 @onready var camera_rig: Marker3D = $CameraRig
 @onready var floor_check_ray: RayCast3D = $FloorCheck
 @onready var orientation_ray: RayCast3D = $Orientation
 @onready var model: MeshInstance3D = $Model
 @onready var fsm: MovementStateMachine = $MovementStateMachine
+
+@export var max_rotation_speed: float = 2.5
+@export var max_camera_rotation_speed: float = 2.5
+@export var rolling_force: float = 4.5
+@export var jump_impulse: float = 6.0
+@export var input_rotation: float
 
 func _ready():
 	can_sleep = false
