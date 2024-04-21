@@ -1,22 +1,21 @@
-extends MovementState
-class_name LongFallingState
+class_name LongFallingState extends MovementState
 
-func enter():
+func enter(_ball: BallCharacter):
 	print("Entering LONG_FALLING state")
 	
 
-func exit():
+func exit(_ball: BallCharacter):
 	print("Exiting LONG_FALLING state")
 	
 
-func process(_delta: float) -> void:
+func process(_ball: BallCharacter, _delta: float) -> void:
 	print("Regular processing in LONG_FALLING state")
 	
 	
-func physics_process(_delta: float) -> void:
+func physics_process(_ball: BallCharacter, _delta: float) -> void:
 	print("Physics processing in LONG_FALLING state")
 	
 
-func integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
+func integrate_forces(_ball: BallCharacter, _state: PhysicsDirectBodyState3D) -> void:
 	pass
 	

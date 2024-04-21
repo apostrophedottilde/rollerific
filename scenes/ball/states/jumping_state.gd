@@ -1,28 +1,21 @@
-extends MovementState
-class_name JumpingState
+class_name JumpingState extends MovementState
 
-@export var max_camera_rotation_speed: float = 2.5
-
-func enter():
+func enter(_ball: BallCharacter, ):
 	print("Entering JUMPING state")
 
 	
-func process(delta: float) -> void:
-	print("Physics processing in JUMPING state")
-	agent.orientation_ray.global_position = agent.position
-	agent.floor_check_ray.global_position = agent.position
-	
-	if agent.linear_velocity.y <= 0:
+func process(ball: BallCharacter, delta: float) -> void:
+	if ball.linear_velocity.y <= 0:
 		transitioned.emit("Falling")
 	
-	agent.input_rotation = Input.get_action_strength("left") - Input.get_action_strength("right")
+	var input_rotation: float = Input.get_action_strength("left") - Input.get_action_strength("right")
 	
-	if Input.is_action_pressed("left") and agent.is_on_floor():
+	if Input.is_action_pressed("left") and ball.is_on_floor():
 		print("Pressed left")
-		agent.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
-		agent.orientation_ray.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
+		ball.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
+		ball.orientation_ray.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
 		
-	if Input.is_action_pressed("right") and agent.is_on_floor():
+	if Input.is_action_pressed("right") and ball.is_on_floor():
 		print("Pressed Right")
-		agent.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
-		agent.orientation_ray.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
+		ball.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
+		ball.orientation_ray.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)

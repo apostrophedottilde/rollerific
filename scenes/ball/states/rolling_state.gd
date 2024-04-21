@@ -1,21 +1,21 @@
 extends MovementState
 class_name RollingState
 
-func enter():
+func enter(_ball: BallCharacter):
 	print("Entering ROLLING state")
 	
 
-func exit():
+func exit(_ball: BallCharacter):
 	print("Exiting ROLLING state")
 	
 
-func process(_delta: float) -> void:
+func process(_ball: BallCharacter, _delta: float) -> void:
 	print("Regular processing in ROLLING state")
 	
 	
-func physics_process(_delta: float) -> void:
+func physics_process(_ball: BallCharacter, _delta: float) -> void:
 	print("Physics processing in ROLLING state")
 	
 	
-func integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
+func integrate_forces(_ball: BallCharacter, _state: PhysicsDirectBodyState3D) -> void:
 	pass

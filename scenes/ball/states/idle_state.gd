@@ -1,35 +1,31 @@
 class_name IdleState extends MovementState
 
-@export var max_camera_rotation_speed: float = 2.5
-
-func enter():
+func enter(_ball: BallCharacter, ):
 	print("Entering IDLE state")
 	
-func process(delta: float) -> void:
-	agent.orientation_ray.global_position = agent.position
-	agent.floor_check_ray.global_position = agent.position
 	
-	agent.input_rotation = Input.get_action_strength("left") - Input.get_action_strength("right")
+func process(ball: BallCharacter, delta: float) -> void:
+	var input_rotation: float = Input.get_action_strength("left") - Input.get_action_strength("right")
 	
-	if Input.is_action_pressed("forward") and agent.is_on_floor():
+	if Input.is_action_pressed("forward") and ball.is_on_floor():
 		print("Pressed Forward")
-		agent.apply_central_force(-agent.orientation_ray.basis.z * agent.ball_profile.rolling_force)
+		ball.apply_central_force(-ball.orientation_ray.basis.z * ball.ball_profile.rolling_force)
 		
-	if Input.is_action_pressed("back") and agent.is_on_floor():
+	if Input.is_action_pressed("back") and ball.is_on_floor():
 		print("Pressed Backwards")
-		agent.apply_central_force(agent.orientation_ray.basis.z * agent.ball_profile.rolling_force)
+		ball.apply_central_force(ball.orientation_ray.basis.z * ball.ball_profile.rolling_force)
 		
-	if Input.is_action_pressed("left") and agent.is_on_floor():
+	if Input.is_action_pressed("left") and ball.is_on_floor():
 		print("Pressed left")
-		agent.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
-		agent.orientation_ray.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
+		ball.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
+		ball.orientation_ray.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
 		
-	if Input.is_action_pressed("right") and agent.is_on_floor():
+	if Input.is_action_pressed("right") and ball.is_on_floor():
 		print("Pressed Right")
-		agent.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
-		agent.orientation_ray.rotate_y(agent.input_rotation * agent.ball_profile.max_rotation_speed * delta)
+		ball.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
+		ball.orientation_ray.rotate_y(input_rotation * ball.ball_profile.max_rotation_speed * delta)
 		
-	if Input.is_action_just_pressed("jump") and agent.is_on_floor():
+	if Input.is_action_just_pressed("jump") and ball.is_on_floor():
 		print("Pressed Jump")
-		agent.apply_central_impulse(Vector3.UP * agent.ball_profile.jump_impulse)
+		ball.apply_central_impulse(Vector3.UP * ball.ball_profile.jump_impulse)
 		transitioned.emit("Jumping")

@@ -8,25 +8,22 @@ class_name BallCharacter extends RigidBody3D
 
 @export var ball_profile: BallProfile
 
-var input_rotation: float
-
 func _ready():
-	print("BALL PROFILE: " + var_to_str(ball_profile))
 	can_sleep = false
 	floor_check_ray.top_level = true
 	orientation_ray.top_level = true
 	
 
 func _process(delta: float):
-	fsm.current_state.process(delta)
+	fsm.current_state.process(self, delta)
 	
 
 func _physics_process(delta: float):
-	fsm.current_state.physics_process(delta)
+	fsm.current_state.physics_process(self, delta)
 
 		
 func _integrate_forces(state: PhysicsDirectBodyState3D):
-	fsm.current_state.integrate_forces(state)
+	fsm.current_state.integrate_forces(self, state)
 
 
 func _on_death_pit_body_entered(_body: Node3D) -> void:

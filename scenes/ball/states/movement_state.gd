@@ -2,30 +2,27 @@ class_name MovementState extends Node
 
 signal transitioned(new_state_name: StringName)
 
-@onready var agent: BallCharacter
-
 var current_state: MovementStateMachine
-
 
 func _ready() -> void:
 	current_state = get_parent()
-	agent = current_state.agent
 
-func enter():
-	pass
-	
-
-func exit():
+func enter(ball: BallCharacter) -> void:
 	pass
 	
 
-func process(_delta: float) -> void:
+func exit(ball: BallCharacter) -> void:
+	pass
+	
+
+func process(_ball: BallCharacter, _delta: float) -> void:
 	pass
 	
 	
-func physics_process(_delta: float) -> void:
-	pass
+func physics_process(ball: BallCharacter, _delta: float) -> void:
+	ball.orientation_ray.global_position = ball.position
+	ball.floor_check_ray.global_position = ball.position
+		
 	
-	
-func integrate_forces(_state: PhysicsDirectBodyState3D) -> void:
+func integrate_forces(_ball: BallCharacter, _state: PhysicsDirectBodyState3D) -> void:
 	pass

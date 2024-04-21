@@ -117,3 +117,5 @@ render_target_update_mode = 4
 [node name="Camera2" type="Camera3D" parent="UI/SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.514305, -0.385487, 0.766088, 3.55642e-09, 0.893285, 0.449491, -0.857607, 0.231175, -0.459421, -25.8573, 6.89519, 39.7)
 current = true
+
+[connection signal="body_entered" from="World/DeathPit" to="Ball" method="_on_death_pit_body_entered"]
