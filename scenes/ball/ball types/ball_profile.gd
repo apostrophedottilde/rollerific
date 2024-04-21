@@ -11,3 +11,4 @@ class_name BallProfile extends Resource
 @export var friction: float
 @export var rolling_force: float
 @export var jump_impulse: float
+@export var max_rotation_speed: float

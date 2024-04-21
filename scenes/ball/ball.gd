@@ -7,10 +7,6 @@ class_name BallCharacter extends RigidBody3D
 @onready var fsm: MovementStateMachine = $MovementStateMachine
 
 @export var ball_profile: BallProfile
-@export var max_rotation_speed: float = 4.0
-@export var max_camera_rotation_speed: float = 2.5
-@export var rolling_force: float = 4.5
-@export var jump_impulse: float = 6.0
 
 var input_rotation: float
 
@@ -39,3 +35,7 @@ func _on_death_pit_body_entered(_body: Node3D) -> void:
 
 func _on_target_point_body_entered(_body: Node3D) -> void:
 	pass
+
+
+func is_on_floor() -> bool:
+	return floor_check_ray.is_colliding()

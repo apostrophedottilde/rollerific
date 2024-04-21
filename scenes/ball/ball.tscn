@@ -24,8 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.5, 11)
 mass = 5.2
 script = ExtResource("1_qmnqg")
 ball_profile = ExtResource("2_u5gdm")
-rolling_force = 24.0
-jump_impulse = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -43,11 +41,12 @@ collide_with_areas = true
 [node name="Orientation" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -12)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Orientation"]
+[node name="SpringArm3D" type="SpringArm3D" parent="Orientation" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.92388, 0.382683, 0, -0.382683, 0.92388, 0, 0, 0)
 spring_length = 3.0
 margin = 0.5
 script = ExtResource("5_csnn5")
+player = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="Orientation/SpringArm3D"]
 current = true
