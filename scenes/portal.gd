@@ -1,0 +1,19 @@
+class_name Portal extends Node3D
+
+@export var target_portal: Portal
+@onready var area_3d: Area3D = $Area3D
+
+var passing_through = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass

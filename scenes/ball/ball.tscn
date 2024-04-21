@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh2kbvowmcwly"]
+[gd_scene load_steps=14 format=3 uid="uid://dh2kbvowmcwly"]
 
 [ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_qmnqg"]
 [ext_resource type="Texture2D" uid="uid://7qxncaipyg7c" path="res://assets/textures/pixar-ball.png" id="2_3iphe"]
+[ext_resource type="Resource" uid="uid://bqbrredc0vvul" path="res://scenes/ball/ball types/default_ball.tres" id="2_u5gdm"]
 [ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="3_fwd7i"]
 [ext_resource type="Script" path="res://scenes/ball/states/movement_state_machine.gd" id="4_24i3x"]
+[ext_resource type="Script" path="res://scenes/levels/camera_springarm_controller.gd" id="5_csnn5"]
 [ext_resource type="Script" path="res://scenes/ball/states/idle_state.gd" id="5_xve3s"]
 [ext_resource type="Script" path="res://scenes/ball/states/falling_state.gd" id="6_1epdd"]
 [ext_resource type="Script" path="res://scenes/ball/states/long_falling_state.gd" id="7_iu7vs"]
@@ -18,9 +20,12 @@ albedo_texture = ExtResource("2_3iphe")
 roughness = 0.4
 
 [node name="Ball" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.5, 11)
+mass = 5.2
 script = ExtResource("1_qmnqg")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
+ball_profile = ExtResource("2_u5gdm")
+rolling_force = 24.0
+jump_impulse = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -37,6 +42,15 @@ collide_with_areas = true
 
 [node name="Orientation" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -12)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Orientation"]
+transform = Transform3D(1, 0, 0, 0, 0.92388, 0.382683, 0, -0.382683, 0.92388, 0, 0, 0)
+spring_length = 3.0
+margin = 0.5
+script = ExtResource("5_csnn5")
+
+[node name="Camera3D" type="Camera3D" parent="Orientation/SpringArm3D"]
+current = true
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "current_state")]
 script = ExtResource("4_24i3x")

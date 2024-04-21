@@ -13,6 +13,9 @@ func physics_process(delta: float) -> void:
 	if Input.is_action_pressed("cam_right") and is_on_floor():
 		print("Pressed cam-right")
 		agent.cam_spring_arm.rotation.y -= Input.get_action_strength("cam_right") * cam_rotation_speed * delta
+		
+	if Input.get_action_strength("cam_left") - Input.get_action_strength("cam_right") == 0.0:
+		agent.cam_spring_arm.rotation.y = lerp(agent.cam_spring_arm.rotation.y, agent.floor_check_ray.rotation.y, 0.01)
 	
 func process(delta: float) -> void:
 	agent.orientation_ray.global_position = agent.position

@@ -6,6 +6,7 @@ class_name BallCharacter extends RigidBody3D
 @onready var cam_spring_arm: SpringArm3D = $Orientation/SpringArm3D
 @onready var fsm: MovementStateMachine = $MovementStateMachine
 
+@export var ball_profile: BallProfile
 @export var max_rotation_speed: float = 4.0
 @export var max_camera_rotation_speed: float = 2.5
 @export var rolling_force: float = 4.5
@@ -14,6 +15,7 @@ class_name BallCharacter extends RigidBody3D
 var input_rotation: float
 
 func _ready():
+	print("BALL PROFILE: " + var_to_str(ball_profile))
 	can_sleep = false
 	floor_check_ray.top_level = true
 	orientation_ray.top_level = true
