@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dav17rds4bnuc"
-path.s3tc="res://.godot/imported/masonry_kit_02_MasonryTrim_01_Normal.png-d001370f66084e0b2451bab4ed1cbd87.s3tc.ctex"
+uid="uid://bvy2hr8qtxv0q"
+path.s3tc="res://.godot/imported/masonry_kit_01_MasonryTrim_01_Normal.png-cefdb7f9af911014c8cf16d304b12ae6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "4b3b8092b9a68016399548581f0c276c"
+}
 
 [deps]
 
-source_file="res://assets/masonry_kit_02_MasonryTrim_01_Normal.png"
-dest_files=["res://.godot/imported/masonry_kit_02_MasonryTrim_01_Normal.png-d001370f66084e0b2451bab4ed1cbd87.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_01_MasonryTrim_01_Normal.png"
+dest_files=["res://.godot/imported/masonry_kit_01_MasonryTrim_01_Normal.png-cefdb7f9af911014c8cf16d304b12ae6.s3tc.ctex"]
 
 [params]
 
@@ -26,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/masonry_kit_02_MasonryTrim_01_Normal.png"
+roughness/src_normal="res://assets/masonry_kit_01_MasonryTrim_01_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

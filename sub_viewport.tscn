@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://docccjq2djfi4"]
+[gd_scene format=3 uid="uid://c2qe4m1c0rckm"]
 
 [node name="SubViewport" type="SubViewport"]
 handle_input_locally = false

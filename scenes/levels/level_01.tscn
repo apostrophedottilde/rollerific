@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ci1tqd8q37feu" path="res://scenes/powerups/up1/power_up_01.tscn" id="3_7htj0"]
 [ext_resource type="PackedScene" uid="uid://bpiwsrsssxecl" path="res://scenes/target_point/target_point.tscn" id="4_0afh8"]
 [ext_resource type="Script" path="res://ui/ui_controller.gd.gd" id="5_7fsae"]
-[ext_resource type="PackedScene" uid="uid://c35ij4gtudi5h" path="res://scenes/portal.tscn" id="6_fkik1"]
+[ext_resource type="PackedScene" uid="uid://c35ij4gtudi5h" path="res://scenes/portal/portal.tscn" id="6_fkik1"]
 [ext_resource type="MeshLibrary" uid="uid://uiqppryq0bp6" path="res://assets/masontry_kit_01.meshlib" id="7_h3cgq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25q1d"]

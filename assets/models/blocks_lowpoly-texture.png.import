@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://54ei3ej37a0k"
+uid="uid://bh5o5levf786b"
 path.s3tc="res://.godot/imported/blocks_lowpoly-texture.png-19f189b75dda534f034bc9fed19dacb0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

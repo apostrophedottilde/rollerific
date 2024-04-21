@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfe58x1ph7c37"
-path.s3tc="res://.godot/imported/masonry_kit_01_MasonryTrim_01_Albedo.png-132a8fe0ed84ba5a4088d625150e90f8.s3tc.ctex"
+uid="uid://bj4ebv6ybew7u"
+path.s3tc="res://.godot/imported/masonry_kit_01_2.png-4e7242dd29eae37fd997e3c7825fe8e8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "494f010b12a5021b8fb9ce3c6f4b11df"
-}
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/masonry_kit_01_MasonryTrim_01_Albedo.png"
-dest_files=["res://.godot/imported/masonry_kit_01_MasonryTrim_01_Albedo.png-132a8fe0ed84ba5a4088d625150e90f8.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_01_2.png"
+dest_files=["res://.godot/imported/masonry_kit_01_2.png-4e7242dd29eae37fd997e3c7825fe8e8.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +21,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/masonry_kit_01_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

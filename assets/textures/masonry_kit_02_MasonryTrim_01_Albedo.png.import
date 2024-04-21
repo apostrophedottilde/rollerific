@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuyvkkr5vebov"
-path.s3tc="res://.godot/imported/PerlinNoise_Tiled.png-62115374fd1885277058852a755e750d.s3tc.ctex"
+uid="uid://byukyt2demexr"
+path.s3tc="res://.godot/imported/masonry_kit_02_MasonryTrim_01_Albedo.png-0895bd0e290c0a4c914eb20274126b6d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/PerlinNoise_Tiled.png"
-dest_files=["res://.godot/imported/PerlinNoise_Tiled.png-62115374fd1885277058852a755e750d.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_02_MasonryTrim_01_Albedo.png"
+dest_files=["res://.godot/imported/masonry_kit_02_MasonryTrim_01_Albedo.png-0895bd0e290c0a4c914eb20274126b6d.s3tc.ctex"]
 
 [params]
 

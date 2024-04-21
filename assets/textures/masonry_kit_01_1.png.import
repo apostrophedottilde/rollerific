@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o7xqmnc6wnsp"
-path.s3tc="res://.godot/imported/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png-40f1792e074b9109f1117fb2fb357007.s3tc.ctex"
+uid="uid://cms78rejlsnpn"
+path.s3tc="res://.godot/imported/masonry_kit_01_1.png-29338090072de52a6de06206087c4bec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "95b34bfcacd52d02e55d56190db7b39b"
-}
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png"
-dest_files=["res://.godot/imported/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png-40f1792e074b9109f1117fb2fb357007.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_01_1.png"
+dest_files=["res://.godot/imported/masonry_kit_01_1.png-29338090072de52a6de06206087c4bec.s3tc.ctex"]
 
 [params]
 

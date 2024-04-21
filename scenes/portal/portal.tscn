@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c35ij4gtudi5h"]
 
-[ext_resource type="Script" path="res://scenes/portal.gd" id="1_36uxb"]
-[ext_resource type="Shader" uid="uid://c5vocorq76gys" path="res://scenes/portal_shader.tres" id="2_my3hc"]
+[ext_resource type="Script" path="res://scenes/portal/portal.gd" id="1_36uxb"]
+[ext_resource type="Shader" uid="uid://c5vocorq76gys" path="res://scenes/portal/portal_shader.tres" id="2_my3hc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu7b8"]
 resource_name = "Material.001"

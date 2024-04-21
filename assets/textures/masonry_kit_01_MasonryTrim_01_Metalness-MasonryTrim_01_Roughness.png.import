@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byukyt2demexr"
-path.s3tc="res://.godot/imported/masonry_kit_02_MasonryTrim_01_Albedo.png-976ca8ec1a452843170b7bb980454459.s3tc.ctex"
+uid="uid://o7xqmnc6wnsp"
+path.s3tc="res://.godot/imported/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png-129be8305c2a85d939743cb46f93a381.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "95b34bfcacd52d02e55d56190db7b39b"
+}
 
 [deps]
 
-source_file="res://assets/masonry_kit_02_MasonryTrim_01_Albedo.png"
-dest_files=["res://.godot/imported/masonry_kit_02_MasonryTrim_01_Albedo.png-976ca8ec1a452843170b7bb980454459.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png"
+dest_files=["res://.godot/imported/masonry_kit_01_MasonryTrim_01_Metalness-MasonryTrim_01_Roughness.png-129be8305c2a85d939743cb46f93a381.s3tc.ctex"]
 
 [params]
 

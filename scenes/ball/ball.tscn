@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bqbrredc0vvul" path="res://scenes/ball/ball types/default_ball.tres" id="2_u5gdm"]
 [ext_resource type="ArrayMesh" uid="uid://dpt7sb5f21rha" path="res://assets/models/pixar-ball.obj" id="3_fwd7i"]
 [ext_resource type="Script" path="res://scenes/ball/states/movement_state_machine.gd" id="4_24i3x"]
-[ext_resource type="Script" path="res://scenes/levels/camera_springarm_controller.gd" id="5_csnn5"]
+[ext_resource type="Script" path="res://scenes/ball/camera_springarm_controller.gd" id="5_csnn5"]
 [ext_resource type="Script" path="res://scenes/ball/states/idle_state.gd" id="5_xve3s"]
 [ext_resource type="Script" path="res://scenes/ball/states/falling_state.gd" id="6_1epdd"]
 [ext_resource type="Script" path="res://scenes/ball/states/long_falling_state.gd" id="7_iu7vs"]

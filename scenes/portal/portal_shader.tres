@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://c5vocorq76gys"]
 
-[ext_resource type="Texture2D" uid="uid://cuyvkkr5vebov" path="res://assets/PerlinNoise_Tiled.png" id="1_rb38e"]
+[ext_resource type="Texture2D" uid="uid://cuyvkkr5vebov" path="res://assets/textures/PerlinNoise_Tiled.png" id="1_rb38e"]
 [ext_resource type="Texture2D" uid="uid://cha8vbqj3ij4x" path="res://assets/T_VFX_CircleFit1.png" id="2_6m3lc"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_4gsky"]

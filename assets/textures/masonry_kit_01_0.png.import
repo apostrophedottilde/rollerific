@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cms78rejlsnpn"
-path.s3tc="res://.godot/imported/masonry_kit_01_1.png-472752657213b2802dc55c3acc3602fd.s3tc.ctex"
+uid="uid://csxf3y0n4va16"
+path.s3tc="res://.godot/imported/masonry_kit_01_0.png-451371873e67868fcdf81f6b86115ed8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/masonry_kit_01_1.png"
-dest_files=["res://.godot/imported/masonry_kit_01_1.png-472752657213b2802dc55c3acc3602fd.s3tc.ctex"]
+source_file="res://assets/textures/masonry_kit_01_0.png"
+dest_files=["res://.godot/imported/masonry_kit_01_0.png-451371873e67868fcdf81f6b86115ed8.s3tc.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
