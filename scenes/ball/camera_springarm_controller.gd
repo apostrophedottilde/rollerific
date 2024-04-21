@@ -8,14 +8,14 @@ func _ready() -> void:
 		add_excluded_object(ball.get_rid())
 		
 		
-func physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var cam_rotation_speed: float = max_camera_rotation_speed
 	
-	if Input.is_action_pressed("cam_left") and ball.is_on_floor():
+	if Input.is_action_pressed("cam_left"):
 		print("Pressed cam-left")
 		ball.cam_spring_arm.rotation.y += Input.get_action_strength("cam_left") * cam_rotation_speed * delta
 		
-	if Input.is_action_pressed("cam_right") and ball.is_on_floor():
+	if Input.is_action_pressed("cam_right"):
 		print("Pressed cam-right")
 		ball.cam_spring_arm.rotation.y -= Input.get_action_strength("cam_right") * cam_rotation_speed * delta
 		
