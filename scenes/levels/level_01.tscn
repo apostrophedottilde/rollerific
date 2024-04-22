@@ -13,11 +13,24 @@ size = Vector3(100, 5, 100)
 
 [sub_resource type="Environment" id="Environment_q8qqc"]
 background_mode = 1
-background_color = Color(0.509804, 0.592157, 0.992157, 1)
-ambient_light_color = Color(0.403922, 0.498039, 0.85098, 1)
+background_color = Color(0.956863, 0.886275, 0.996078, 1)
+background_energy_multiplier = 0.57
+ambient_light_color = Color(0.678431, 0.745098, 0.945098, 1)
 tonemap_mode = 3
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.17
+sdfgi_cascades = 6
+sdfgi_min_cell_size = 0.488281
+glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.47451, 0.517647, 0.843137, 1)
+fog_light_color = Color(0.960784, 0.639216, 0.682353, 1)
+fog_light_energy = 0.21
+fog_density = 0.03
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0147
+volumetric_fog_anisotropy = 0.25
+volumetric_fog_sky_affect = 0.254
 adjustment_enabled = true
 adjustment_brightness = 0.75
 adjustment_contrast = 1.5
@@ -29,6 +42,7 @@ default_font_size = 24
 [node name="Main" type="Node3D"]
 
 [node name="Ball" parent="." instance=ExtResource("1_r6vws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, 13.4109)
 
 [node name="World" type="Node" parent="."]
 
@@ -81,9 +95,16 @@ target_portal = NodePath("../Portal")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, -0.75, 0.433013, -0.864898, -0.406943, 0.293852, -0.0441771, -0.521438, -0.852145, 0, 10.9224, 4.82911)
-light_color = Color(0.917647, 0.784314, 0.690196, 1)
-light_energy = 2.0
+light_color = Color(0.92549, 0.917647, 0.976471, 1)
+light_energy = 2.986
+light_indirect_energy = 1.438
+light_volumetric_fog_energy = 2.753
+light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 6.863
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 120.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q8qqc")

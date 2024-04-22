@@ -2,6 +2,7 @@ extends SpringArm3D
 
 @export var ball: BallCharacter
 @export var max_camera_rotation_speed: float = 2.5
+@export var spring_back_speed: float = 0.05
 
 func _ready() -> void:
 	if ball:
@@ -9,15 +10,11 @@ func _ready() -> void:
 		
 		
 func _physics_process(delta: float) -> void:
-	var cam_rotation_speed: float = max_camera_rotation_speed
-	
 	if Input.is_action_pressed("cam_left"):
-		print("Pressed cam-left")
-		ball.cam_spring_arm.rotation.y += Input.get_action_strength("cam_left") * cam_rotation_speed * delta
+		ball.cam_spring_arm.rotation.y += Input.get_action_strength("cam_left") * max_camera_rotation_speed * delta
 		
 	if Input.is_action_pressed("cam_right"):
-		print("Pressed cam-right")
-		ball.cam_spring_arm.rotation.y -= Input.get_action_strength("cam_right") * cam_rotation_speed * delta
+		ball.cam_spring_arm.rotation.y -= Input.get_action_strength("cam_right") * max_camera_rotation_speed * delta
 		
 	if Input.get_action_strength("cam_left") - Input.get_action_strength("cam_right") == 0.0:
-		ball.cam_spring_arm.rotation.y = lerp(ball.cam_spring_arm.rotation.y, ball.floor_check_ray.rotation.y, 0.01)
+		ball.cam_spring_arm.rotation.y = lerp(ball.cam_spring_arm.rotation.y, ball.floor_check_ray.rotation.y, spring_back_speed)

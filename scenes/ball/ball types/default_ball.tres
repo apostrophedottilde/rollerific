@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="BallProfile" load_steps=2 format=3 uid="uid://bqbrredc0vvul"]
+[gd_resource type="Resource" script_class="BallProfile" load_steps=4 format=3 uid="uid://bqbrredc0vvul"]
 
+[ext_resource type="PackedScene" uid="uid://clqwruehaxu2p" path="res://assets/models/metallic_ball.glb" id="1_cmsao"]
 [ext_resource type="Script" path="res://scenes/ball/ball types/ball_profile.gd" id="1_ekhx5"]
+[ext_resource type="Texture2D" uid="uid://cjqe00gqa4p2g" path="res://assets/metal_ball_thumbnail.png" id="3_ko2qs"]
 
 [resource]
 script = ExtResource("1_ekhx5")
@@ -8,6 +10,8 @@ name = "Main Ball"
 description = "The default shitty ball"
 health = 100.0
 lifespan = 0
+thumbnail = ExtResource("3_ko2qs")
+scene = ExtResource("1_cmsao")
 mass = 5.2
 gravity_multiplier = 1.0
 friction = 1.0

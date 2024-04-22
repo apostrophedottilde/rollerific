@@ -4,7 +4,7 @@ class_name BallProfile extends Resource
 @export var description: String
 @export var health: float
 @export var lifespan: int
-@export var thumbnail: ImageTexture
+@export var thumbnail: Texture
 @export var scene: PackedScene
 @export var mass: float
 @export var gravity_multiplier: float
